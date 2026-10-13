@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DB Graph — ER-визуализация</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='3' y='4' width='18' height='6' rx='2' fill='%235eead4'/><rect x='3' y='13' width='12' height='6' rx='2' fill='%23374a5c'/></svg>">
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header id="topbar">
+  <div class="brand"><span class="logo"></span>DB Graph <span id="dbfile" class="dbfile"></span></div>
+  <div class="stats" id="stats"></div>
+  <div class="grow"></div>
+  <nav class="seg" id="layouts" title="Раскладка графа">
+    <button data-layout="force" class="on">Force</button>
+    <button data-layout="layers">Слои</button>
+    <button data-layout="grid">Сетка</button>
+    <button data-layout="ring">Круг</button>
+  </nav>
+  <button id="fitBtn" class="tbtn" title="Вписать в экран (F)">⤢</button>
+  <button id="zoomOutBtn" class="tbtn" title="Меньше">−</button>
+  <button id="zoomInBtn" class="tbtn" title="Больше">+</button>
+  <label class="chk" title="Метки связей">
+    <input type="checkbox" id="labelsChk" checked> метки
+  </label>
+  <label class="chk" title="Показывать views">
+    <input type="checkbox" id="viewsChk" checked> views
+  </label>
+</header>
+
+<main>
+  <aside id="sidebar">
+    <div class="src">
+      <button id="demoBtn" class="sbtn">Демо</button>
+      <button id="openBtn" class="sbtn">Открыть .db/.sqlite</button>
+      <input type="file" id="fileInput" accept=".db,.sqlite,.sqlite3,.db3" hidden>
+    </div>
+    <input id="search" placeholder="поиск таблицы…  ⏎ — фокус" spellcheck="false">
+    <div id="tableList"></div>
+  </aside>
+
+  <div id="viewport">
+    <div id="world">
+      <svg id="edgeSvg"></svg>
+      <div id="cards"></div>
+    </div>
+    <div id="hint">колесо — зум · тянуть фон — панорама · тянуть карточку — двигать · hover — связи</div>
+  </div>
+
+  <aside id="panel" hidden></aside>
+</main>
+
+<script type="module" src="/static/js/app.js"></script>
+</body>
+</html>
